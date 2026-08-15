@@ -1,0 +1,16 @@
+# DevOps artifacts
+.github/
+**/*.yml
+**/*.yaml
+**/*.tf
+**/*.tfstate
+
+# Python files
+*.py
+*.pyc
+__pycache__/
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+*.egg-info/
