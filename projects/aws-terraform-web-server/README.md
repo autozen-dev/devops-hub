@@ -1,6 +1,9 @@
-# Project Challenge
+# Terraform AWS Nginx Web Server
 
-## Deploy a web server to AWS using Terraform.
+This project uses Terraform to provision a publicly accessible AWS EC2
+instance and configure it as an Nginx web server. It also creates the VPC,
+public subnet, internet gateway, route table, and security group required to
+serve a simple web page over HTTP.
 
 ## Goal:
 
@@ -19,12 +22,19 @@
 * Amazon Linux.
 * Nginx.
 
+The infrastructure includes a VPC with a public subnet, internet gateway,
+public route table, and security group allowing SSH and HTTP traffic.
+
 ## Project structure:
 
 ```bash
 aws-terraform-web-server/
+├── vpc.tf
+├── subnet.tf
+├── igw.tf
+├── route_table.tf
+├── sg.tf
 ├── ec2.tf
-├── security_group.tf
 ├── provider.tf
 ├── variables.tf
 ├── outputs.tf

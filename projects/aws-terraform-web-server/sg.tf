@@ -1,6 +1,11 @@
 resource "aws_security_group" "web" {
   name        = "terraform-web-sg"
   description = "Allow SSH and HTTP traffic"
+  vpc_id      = aws_vpc.web_server_vpc.id
+
+  tags = {
+    Name = "terraform-web-sg"
+  }
 
   ingress {
     description = "SSH"
