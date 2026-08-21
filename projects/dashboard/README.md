@@ -33,3 +33,5 @@ dashboard/
 
 - HTML5: [html5 validator](https://github.com/marketplace/actions/html5-validator)
 - CSS: [stylelinter](https://github.com/marketplace/actions/stylelinter)
+- Docker Login: [gh marketplace](https://github.com/marketplace/actions/docker-login)
+- Docker Build and push Docker images [gh marketplace](https://github.com/marketplace/actions/build-and-push-docker-images)
