@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # running total of resources handled by kubectl.
 total_deleted=0
 
-printf '\n\033[1;36mDeleting dashboard application:\033[0m\n'
+printf '\n\033[1;36mDeleting static-dashboard application:\033[0m\n'
 printf '  1. app-deploy.yaml\n'
 printf '  2. app-service.yaml\n'
 

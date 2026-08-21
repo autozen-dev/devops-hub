@@ -7,12 +7,12 @@ kind: Deployment
 
 metadata:
   # Name used to identify the Deployment within the Kubernetes cluster
-  name: github-dashboard-app
+  name: static-dashboard-app
 
   # Labels attached to the Deployment
   # Labels can be used to identify and organise Kubernetes resources
   labels:
-    app: dashboard
+    app: static-dashboard
 
 spec:
   # Number of Pod replicas Kubernetes should maintain
@@ -23,7 +23,7 @@ spec:
   # The selector must match the labels defined in the Pod template below
   selector:
     matchLabels:
-      app: dashboard
+      app: static-dashboard
 
   # Defines the configuration for the Pods created by the Deployment
   template:
@@ -31,16 +31,16 @@ spec:
       # Label assigned to each Pod
       # This must match the Deployment selector above
       labels:
-        app: dashboard
+        app: static-dashboard
 
     spec:
       # Defines the containers that will run inside each Pod
       containers:
-        - name: dashboard
+        - name: static-dashboard
 
           # Docker image pulled from Docker Hub
           # The SHA tag identifies a specific version of the application
-          image: arsalandevengineer/dashboard:sha-246a82d
+          image: arsalandevengineer/static-dashboard:sha-246a82d
 
           ports:
             # Port exposed by the container

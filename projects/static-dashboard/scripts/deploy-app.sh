@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 # running total of resources reported by kubectl.
 total_deployed=0
 
-printf '\n\033[1;36mDeploying dashboard application:\033[0m\n'
+printf '\n\033[1;36mDeploying static-dashboard application:\033[0m\n'
 printf '  1. app-deploy.yaml\n'
 printf '  2. app-service.yaml\n'
 

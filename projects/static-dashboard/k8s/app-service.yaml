@@ -6,7 +6,7 @@ kind: Service
 
 metadata:
   # Name used to identify the Service within the Kubernetes cluster
-  name: github-dashboard-service
+  name: static-dashboard-service
 
 spec:
   # Exposes the Service through a port on the Kubernetes node
@@ -15,12 +15,12 @@ spec:
   type: NodePort
 
   # Selects the Pods that this Service will send traffic to
-  # This must match the labels defined in deployment.yaml
+  # This must match the labels defined in app-deploy.yaml
   selector:
-    app: dashboard
+    app: static-dashboard
 
   ports:
-    # Use TCP to communicate with the dashboard
+    # Use TCP to communicate with the static-dashboard application
     - protocol: TCP
 
       # Port exposed by the Kubernetes Service

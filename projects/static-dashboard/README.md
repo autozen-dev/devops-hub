@@ -18,17 +18,21 @@
 
 ## Project structure:
 ```bash
-dashboard/
+static-dashboard/
 ├── app/
 │   ├── index.html
 │   └── style.css
-├── tests/
-│   └── test_app.py
+├── k8s/
+│   ├── app-deploy.yaml
+│   └── app-service.yaml
+├── scripts/
+│   ├── deploy-app.sh
+│   └── delete-app.sh
 ├── Dockerfile
-├── kubernetes/
-│   ├── deployment.yaml
-│   └── service.yaml
-└── README.md
+├── README.md
+└── .github/
+    └── workflows/
+        └── deploy-static-dashboard.yaml
 ```
 
 - HTML5: [html5 validator](https://github.com/marketplace/actions/html5-validator)

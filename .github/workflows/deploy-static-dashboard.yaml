@@ -1,7 +1,7 @@
 ---
 
 # Name shown in the GitHub Actions workflow interface
-name: dashboard-deployment
+name: static-dashboard
 
 # Run this workflow whenever code is pushed to the main branch
 on:
@@ -9,7 +9,7 @@ on:
     branches:
       - main
     paths:
-      - 'projects/dashboard/**'
+      - 'projects/static-dashboard/**'
 
 # Give the workflow only the permissions it needs
 permissions:
@@ -19,7 +19,6 @@ jobs:
   # Job responsible for building the Docker image and pushing it to Docker Hub
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
       # Download the repository contents onto the GitHub Actions runner
       # This gives Docker access to the Dockerfile and application files
@@ -42,13 +41,13 @@ jobs:
 
       # Generate Docker image metadata and tags
       # This creates both:
-      #   - A branch tag, e.g. dashboard:main
-      #   - A commit SHA tag, e.g. dashboard:sha-7db5b9a
+      #   - A branch tag, e.g. static-dashboard:main
+      #   - A commit SHA tag, e.g. static-dashboard:sha-7db5b9a
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ vars.DOCKERHUB_USERNAME }}/dashboard
+          images: ${{ vars.DOCKERHUB_USERNAME }}/static-dashboard
           tags: |
             type=ref,event=branch
             type=sha
@@ -57,9 +56,9 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
         with:
-          # The Docker build context is the dashboard directory
-          # Docker will therefore use projects/dashboard/Dockerfile
-          context: ./projects/dashboard
+          # The Docker build context is the static-dashboard directory
+          # Docker will therefore use projects/static-dashboard/Dockerfile
+          context: ./projects/static-dashboard
 
           # Push the successfully built image to Docker Hub
           push: true
@@ -74,3 +73,9 @@ jobs:
           # This can make subsequent builds significantly faster
           cache-from: type=gha
           cache-to: type=gha,mode=max
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy ku
+      
