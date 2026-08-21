@@ -5,6 +5,8 @@ name: static-dashboard
 
 # Run this workflow whenever code is pushed to the main branch
 on:
+  # Also allow manual triggering from the GitHub Actions UI
+  workflow_dispatch:
   push:
     branches:
       - main
