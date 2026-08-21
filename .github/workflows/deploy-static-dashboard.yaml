@@ -73,9 +73,3 @@ jobs:
           # This can make subsequent builds significantly faster
           cache-from: type=gha
           cache-to: type=gha,mode=max
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy ku
-      
