@@ -1,0 +1,48 @@
+---
+
+# Defines this Kubernetes resource as a Deployment
+# A Deployment manages the desired number of Pods running the application
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  # Name used to identify the Deployment within the Kubernetes cluster
+  name: github-dashboard-app
+
+  # Labels attached to the Deployment
+  # Labels can be used to identify and organise Kubernetes resources
+  labels:
+    app: dashboard
+
+spec:
+  # Number of Pod replicas Kubernetes should maintain
+  # Kubernetes will create a new Pod if the desired number is not running
+  replicas: 1
+
+  # Defines which Pods are managed by this Deployment
+  # The selector must match the labels defined in the Pod template below
+  selector:
+    matchLabels:
+      app: dashboard
+
+  # Defines the configuration for the Pods created by the Deployment
+  template:
+    metadata:
+      # Label assigned to each Pod
+      # This must match the Deployment selector above
+      labels:
+        app: dashboard
+
+    spec:
+      # Defines the containers that will run inside each Pod
+      containers:
+        - name: dashboard
+
+          # Docker image pulled from Docker Hub
+          # The SHA tag identifies a specific version of the application
+          image: arsalandevengineer/dashboard:sha-246a82d
+
+          ports:
+            # Port exposed by the container
+            # Nginx inside the Docker container listens on port 80
+            - containerPort: 80

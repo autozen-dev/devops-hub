@@ -1,0 +1,30 @@
+---
+
+# Defines this Kubernetes resource as a Service
+apiVersion: v1
+kind: Service
+
+metadata:
+  # Name used to identify the Service within the Kubernetes cluster
+  name: github-dashboard-service
+
+spec:
+  # Exposes the Service through a port on the Kubernetes node
+  # NodePort is useful for accessing the application from outside
+  # the cluster when using Minikube
+  type: NodePort
+
+  # Selects the Pods that this Service will send traffic to
+  # This must match the labels defined in deployment.yaml
+  selector:
+    app: dashboard
+
+  ports:
+    # Use TCP to communicate with the dashboard
+    - protocol: TCP
+
+      # Port exposed by the Kubernetes Service
+      port: 80
+
+      # Port on the target Pod/container that receives the traffic
+      targetPort: 80
